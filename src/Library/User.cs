@@ -17,12 +17,6 @@ namespace Library;
             usuarios = new List<string>();
         }
 
-
-        public bool IsOwner()
-        {
-            return false;
-        }
-
       
         public void CreateCount()
         {

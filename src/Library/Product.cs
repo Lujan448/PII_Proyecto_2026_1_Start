@@ -4,7 +4,7 @@ namespace Library;
     {
        
         public string Name { get; set; }
-        public int Age { get; set; }
+        public int Year { get; set; }
         public string Country { get; set; }
         public string Genre { get; set; }
         public string Language { get; set; }
@@ -13,11 +13,13 @@ namespace Library;
         private List<Product> product;
 
     
-        public Product(string name, int age, string country)
+        public Product(string name, int year, string country, string genre, string language)
         {
             Name = name;
-            Age = age;
+            Year = year;
             Country = country;
+            Genre = genre;
+            Language = language;
             product = new List<Product>();
         }
 
