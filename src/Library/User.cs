@@ -1,31 +1,29 @@
+namespace Library;
 
-namespace library;  
-
-
-    public class User : IPerson
+    public class User
     {
-   
+    
         public string Name { get; set; }
         public int Age { get; set; }
         public string Country { get; set; }
 
-    
+        
         private List<string> usuarios;
 
-       
+     
         public User(string name)
         {
             Name = name;
             usuarios = new List<string>();
         }
 
-     
+
         public bool IsOwner()
         {
             return false;
         }
 
-     
+      
         public void CreateCount()
         {
             if (!UserIsValid())
@@ -44,13 +42,13 @@ namespace library;
             Console.WriteLine($"Cuenta creada con éxito para {Name}.");
         }
 
-        
+      
         public bool UserExist()
         {
             return usuarios.Contains(Name);
         }
 
-      
+
         public bool UserIsValid()
         {
             return !string.IsNullOrEmpty(Name) && 
@@ -58,4 +56,3 @@ namespace library;
                    Age >= 1;
         }
     }
-
