@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Reflection;
+using Microsoft.VisualBasic;
 
 namespace Library;
 
@@ -11,10 +12,20 @@ public class Record
     {
         get { return records; }
     }
+    private List<Interaction> interactions = new List<Interaction>();
+    public List<Interaction>  Interactions
+    {
+        get { return interactions; }
+    }
 
-    public void AddToRecord(Product product)
+    public void AddProductToRecord(Product product)
     {
         records.Add(product);
+    }
+
+    public void AddInteractionToRecord(Interaction interaction)
+    {
+        interactions.Add(interaction);
     }
 
     public bool Consumed(Product product)

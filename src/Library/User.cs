@@ -6,9 +6,13 @@ namespace Library;
         public string Name { get; set; }
         public int Age { get; set; }
         public string Country { get; set; }
-
-        
         private List<string> usuarios;
+        private Dictionary<string, bool> preference = new Dictionary<string, bool>();
+        public Dictionary<string, bool> Preference
+        {
+            get { return preference; }
+        }
+    
 
      
         public User(string name)

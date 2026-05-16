@@ -24,11 +24,15 @@ namespace Library;
         }
 
        
-        public void NewProduct(string name)
+        public void NewProduct()
         {
-           
-            Product p = new Product(name, 0, "No definido");
+            Product p = new Product("PeakyBlinders", 2016, "Inglaterra", "Acción", "inglés");
             product.Add(p);
-            Console.WriteLine($"Producto '{name}' registrado en el sistema.");
+            Console.WriteLine($" El producto '{this.Name}' está registrado en el sistema.");
+        }
+
+        public void RemoveProduct(Product p)
+        {
+            product.Remove(p);
         }
     }
