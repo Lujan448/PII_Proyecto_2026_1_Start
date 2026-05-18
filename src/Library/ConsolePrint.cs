@@ -2,24 +2,24 @@ namespace Library;
 public class ConsolePrint
 {
     //Obtiene la lista de los productos ya ordenados
-    private IEnumerable<Product> items;
-    public ConsolePrint (IEnumerable<Product> items)
+    private List<Interactions> interactList;
+    private List<Product> items;
+    public ConsolePrint (List<Product> items, List<Interactions> interactions)
     {
         this.items = items;
+        this.interactList = interactions;
     }
     // Construye el texto para mostrar los productos
     public string TextToPrint()
     {
         string result = "";
 
-        foreach (Product p in items)
+        for (int i = 0; i < items.Count; i++)
         {
-            result += $"{p.Name} - Puntuación: {p.Score} - Vistas: {p.Views} - Idioma: {p.Language} - Género: {p.Genre}\n";
+            result += $"{items[i].Name} - Puntuación: {interactList[i].AverageRating} - Vistas: {interactList[i].Visualizations} - Idioma: {items[i].Language} - Género: {items[i].Genre}\n";
         }
-
         return result;
-
-        }
+    }
 
     //Imprime el texto generado en la consola
     public void Print()

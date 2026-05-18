@@ -1,12 +1,10 @@
 namespace Library;
-
     public class User
     {
     
         public string Name { get; set; }
         public int Age { get; set; }
         public string Country { get; set; }
-        private List<string> usuarios;
         private Dictionary<string, bool> preference = new Dictionary<string, bool>();
         public Dictionary<string, bool> Preference
         {
@@ -15,42 +13,43 @@ namespace Library;
     
 
      
-        public User(string name)
+        public User(string name, int age, string country)
         {
-            Name = name;
-            usuarios = new List<string>();
+            this.Name = name;
+            this.Age = age;
+            this.Country = country;
         }
 
       
-        public void CreateCount()
+        public void CreateCount(List<User> users)
         {
             if (!UserIsValid())
             {
-                Console.WriteLine($"Error: Los datos de '{Name}' no son válidos.");
+                Console.WriteLine($"Error: Los datos de '{this.Name}' no son válidos.");
                 return;
             }
 
-            if (UserExist())
+            if (UserExist(users))
             {
-                Console.WriteLine($"Error: El usuario '{Name}' ya existe.");
+                Console.WriteLine($"Error: El usuario '{this.Name}' ya existe.");
                 return;
             }
 
-            usuarios.Add(Name);
-            Console.WriteLine($"Cuenta creada con éxito para {Name}.");
+            users.Add(this);
+            Console.WriteLine($"Cuenta creada con éxito para {this.Name}.");
         }
 
       
-        public bool UserExist()
+        public bool UserExist(List<User> users)
         {
-            return usuarios.Contains(Name);
+            return users.Contains(this);
         }
 
 
         public bool UserIsValid()
         {
-            return !string.IsNullOrEmpty(Name) && 
-                   !string.IsNullOrEmpty(Country) && 
-                   Age >= 1;
+            return !string.IsNullOrEmpty(this.Name) && 
+                   !string.IsNullOrEmpty(this.Country) && 
+                   this.Age >= 1;
         }
     }

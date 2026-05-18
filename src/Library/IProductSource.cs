@@ -3,5 +3,5 @@ namespace Library;
 // Permite desacoplar la obtención de datos 
 public interface IProductSource
 {
-    IEnumerable <Product> GetRanking ();
+    List <Product> GetRanking ();
 }

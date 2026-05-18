@@ -4,25 +4,27 @@ namespace Library;
 public class Order : IProductSource
 {
     // Se guarda en una lista los productos que seran ordenados
+    private List<Interactions> interactList;
     private List<Product> rankedList;
     private int totalItems;
     private string criteria;
 
-    public Order (List<Product> products, string criteria)
+    public Order (List<Product> products, List<Interactions> interactions, string criteria)
     {
         rankedList = products;
+        interactList = interactions;
         totalItems = rankedList.Count;
         //Se normaliza el criterio para evitar errores
-        string c = criteria.ToLower();
+        string criter = criteria.ToLower();
 
         //Se valida el criterio, en caso de que sea invalido se elije "views" por defecto 
-        if (c != "score" && c != "views" && c != "language" && c != "genre")
+        if (criter != "score" && criter != "views" && criter != "language" && criter != "genre")
         {
             this.criteria = "views";
         }
         else
         {
-            this.criteria = c;
+            this.criteria = criter;
         }
 
     }
@@ -38,7 +40,7 @@ public class Order : IProductSource
 
                 if (criteria == "score")
                 {
-                    if (rankedList[i].Score < rankedList[i + 1].Score)
+                    if (interactList[i].AverageRating < interactList[i + 1].AverageRating)
                     {
                         needSwap = true;
                     }
@@ -46,7 +48,7 @@ public class Order : IProductSource
 
                 else if (criteria == "views")
                 {
-                    if (rankedList[i].Views< rankedList[i + 1].Views)
+                    if (interactList[i].Visualizations < interactList[i + 1].Visualizations)
                     {
                         needSwap = true;
                     }
@@ -71,10 +73,12 @@ public class Order : IProductSource
                 if (needSwap)
                 {
                     Product productOrder = rankedList[i];
-
                     rankedList[i] = rankedList[i + 1];
+                    rankedList[i + 1] = productOrder; 
 
-                    rankedList[i + 1] = productOrder;    
+                    Interactions interactOrder = interactList[i];   
+                    interactList[i] =  interactList[i + 1];
+                    interactList[i + 1] = interactOrder; 
                 }
 
             }
@@ -82,11 +86,9 @@ public class Order : IProductSource
 
     }
     //Devuelve la lista ya ordenada
-    public IEnumerable <Product> GetRanking()
+    public List<Product> GetRanking()
     {
         Sort();
         return rankedList;
     }
-
-
 }

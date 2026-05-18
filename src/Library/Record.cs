@@ -12,8 +12,8 @@ public class Record
     {
         get { return records; }
     }
-    private List<Interaction> interactions = new List<Interaction>();
-    public List<Interaction>  Interactions
+    private List<Interactions> interactions = new List<Interactions>();
+    public List<Interactions>  Interactions
     {
         get { return interactions; }
     }
@@ -23,7 +23,7 @@ public class Record
         records.Add(product);
     }
 
-    public void AddInteractionToRecord(Interaction interaction)
+    public void AddInteractionToRecord(Interactions interaction)
     {
         interactions.Add(interaction);
     }

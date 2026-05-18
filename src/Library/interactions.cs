@@ -1,4 +1,6 @@
 //visualizaciones - likes - puntuaciones(estrellas)- recomendaciones a otros usuarios
+using System.Runtime.CompilerServices;
+
 public class Interactions
 {
     private int likes;
@@ -44,28 +46,38 @@ public class Interactions
         }
     }
 
-    public void AddLike()
+    public void SumLike()
     {
         this.likes++;
     }
 
-    public void AddVisualization()
+    public void SumVisualization()
     {
         this.visualizations++;
     }
 
-    public void AddRecommendation()
+    public void SumRecommendation()
     {
         this.recommendations++;
     }
 
-    public void AddRating(int stars)
+    public void SumRating(int stars)
     {
         if (stars >= 1 && stars <= 5)
         {
             this.totalStars += stars;
             this.totalRatings++;
         }
+    }
+    
+    //si es popular devuelve true si no es popular devuelve false
+    public bool IsPopular()
+    {
+        if (AverageRating >= 3)
+        {
+            return true; 
+        }
+        return false;
     }
 }
 
