@@ -18,7 +18,7 @@ public class Order : IProductSource
         string criter = criteria.ToLower();
 
         //Se valida el criterio, en caso de que sea invalido se elije "views" por defecto 
-        if (criter != "score" && criter != "views" && criter != "language" && criter != "genre")
+        if (criter != "score" && criter != "views" && criter != "language" && criter != "genre" && criter != "likes")
         {
             this.criteria = "views";
         }
@@ -65,6 +65,13 @@ public class Order : IProductSource
                 else if (criteria == "genre")
                 {
                     if (rankedList[i].Genre.CompareTo(rankedList[i + 1].Genre) > 0)
+                    {
+                        needSwap = true;
+                    }
+                }
+                else if (criteria == "likes")
+                {
+                    if (interactList[i].Likes.CompareTo(interactList[i + 1].Likes) > 0)
                     {
                         needSwap = true;
                     }
