@@ -71,7 +71,7 @@ public class Order : IProductSource
                 }
                 else if (criteria == "likes")
                 {
-                    if (interactList[i].Likes.CompareTo(interactList[i + 1].Likes) > 0)
+                    if (interactList[i].Likes < interactList[i + 1].Likes)
                     {
                         needSwap = true;
                     }
