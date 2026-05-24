@@ -1,128 +1,93 @@
 using Library;
-
 namespace LibraryTests;
 
 [TestFixture]
 public class OrderTest
 {
-
     [Test]
-    public void OrderByScore()
+    public void OrderByScore_IfScoreIsCriteria_FirstIsHighestRated()
     {
-        var products = new List<Product>
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2019, "USA", "Acción", "Ingles"),
-            new Product("C", 2020, "URU", "Romance", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
             new Interactions(),
             new Interactions(),
             new Interactions()
         };
-
         interactions[0].SumRating(2);
         interactions[1].SumRating(5);
         interactions[2].SumRating(1);
 
-
         Order order = new Order(products, interactions, "score");
-
-        List<Product> result = order.GetRanking();
+        List<IProduct> result = order.GetRanking();
 
         Assert.That(result[0].Name, Is.EqualTo("B"));
     }
 
     [Test]
-    public void OrderByViews()
+    public void OrderByViews_IfViewsIsCriteria_FirstIsMostViewed()
     {
-        List<Product> products = new List<Product>
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2019, "USA", "Acción", "Ingles"),
-            new Product("C", 2020, "URU", "Romance", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
             new Interactions(),
             new Interactions(),
             new Interactions()
         };
-
-        for (int i = 0; i < 20; i++)
-        {
-         interactions[0].SumVisualization();   
-        }
-
-        for (int i = 0; i < 100; i++)
-        {
-         interactions[1].SumVisualization();   
-        }
-
-        for (int i = 0; i < 66; i++)
-        {
-         interactions[2].SumVisualization();   
-        }
+        for (int i = 0; i < 20; i++) interactions[0].SumVisualization();
+        for (int i = 0; i < 100; i++) interactions[1].SumVisualization();
+        for (int i = 0; i < 66; i++) interactions[2].SumVisualization();
 
         Order order = new Order(products, interactions, "views");
-
-        List<Product> result = order.GetRanking();
+        List<IProduct> result = order.GetRanking();
 
         Assert.That(result[0].Name, Is.EqualTo("B"));
     }
 
     [Test]
-    public void OrderByLikes()
-     {
-        List<Product> products = new List<Product>
+    public void OrderByLikes_IfLikesIsCriteria_FirstIsMostLiked()
+    {
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2019, "USA", "Acción", "Ingles"),
-            new Product("C", 2020, "URU", "Romance", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
             new Interactions(),
             new Interactions(),
             new Interactions()
         };
+        for (int i = 0; i < 101; i++) interactions[0].SumLike();
+        for (int i = 0; i < 404; i++) interactions[1].SumLike();
+        for (int i = 0; i < 99; i++) interactions[2].SumLike();
 
-        for (int i = 0; i < 101; i++)
-        {
-         interactions[0].SumLike();   
-        }
+        Order order = new Order(products, interactions, "likes"); 
+        List<IProduct> result = order.GetRanking();
 
-        for (int i = 0; i < 404; i++)
-        {
-         interactions[1].SumLike();   
-        }
-
-        for (int i = 0; i < 99; i++)
-        {
-         interactions[2].SumLike();   
-        }
-
-        Order order = new Order(products, interactions, "like");
-
-        List<Product> result = order.GetRanking();
-
-        Assert.That(result[0].Name, Is.EqualTo("B"));
+        Assert.That(result[0].Name, Is.EqualTo("IT"));
     }
 
     [Test]
-    public void OrderByGenre()
+    public void OrderByGenre_IfGenreIsCriteria_FirstIsAlphabetically()
     {
-        List<Product> products = new List<Product>
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2020, "USA", "Accion", "Ingles"),
-            new Product("C", 2019, "URU", "Romance", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
             new Interactions(),
@@ -131,92 +96,74 @@ public class OrderTest
         };
 
         Order order = new Order(products, interactions, "genre");
-
-        List<Product> result = order.GetRanking();
+        List<IProduct> result = order.GetRanking();
 
         Assert.That(result[0].Genre, Is.EqualTo("Accion"));
     }
-    
 
     [Test]
-    public void OrderByLanguage()
+    public void OrderByLanguage_IfLanguageIsCriteria_FirstIsAlphabetically()
     {
-    List<Product> products = new List<Product>
-    {
-        new Product("A", 2021, "USA", "Comedia", "Portugues"),
-        new Product("B", 2020, "USA", "Accion", "Español"),
-        new Product("C", 2019, "URU", "Romance", "Ingles")
-    };
-
-    List<Interactions> interactions = new List<Interactions>
-    {
-        new Interactions(),
-        new Interactions(),
-        new Interactions()
-    };
-
-    Order order = new Order(products, interactions, "language");
-
-    List<Product> result = order.GetRanking();
-
-    Assert.That(result[0].Language, Is.EqualTo("Español"));
-}
-
-    [Test]
-    public void InvalidCriteriaDefaultsToViews()
-    {
-        List<Product> products = new List<Product>
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2020, "USA", "Accion", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
+            new Interactions(),
             new Interactions(),
             new Interactions()
         };
 
-        for (int i = 0; i < 10; i++)
-        {
-            interactions[0].SumVisualization();
-        }
+        Order order = new Order(products, interactions, "language");
+        List<IProduct> result = order.GetRanking();
 
-        for (int i = 0; i < 50; i++)
-        {
-            interactions[1].SumVisualization();
-        }
-
-        Order order = new Order(products, interactions, "algo");
-
-        List<Product> result = order.GetRanking();
-
-        Assert.That(result[0].Name, Is.EqualTo("B"));
+        Assert.That(result[0].Language, Is.EqualTo("Inglés"));
     }
 
-
     [Test]
-    public void OrderAcceptsUppercaseCriteria()
+    public void InvalidCriteria_IfCriteriaIsInvalid_DefaultsToViews()
     {
-        List<Product> products = new List<Product>
+        List<IProduct> products = new List<IProduct>
         {
-            new Product("A", 2021, "USA", "Comedia", "Ingles"),
-            new Product("B", 2020, "USA", "Accion", "Español")
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles")
         };
-
         List<Interactions> interactions = new List<Interactions>
         {
             new Interactions(),
             new Interactions()
         };
+        for (int i = 0; i < 10; i++) interactions[0].SumVisualization();
+        for (int i = 0; i < 50; i++) interactions[1].SumVisualization();
 
+        Order order = new Order(products, interactions, "algo");
+        List<IProduct> result = order.GetRanking();
+
+        Assert.That(result[0].Name, Is.EqualTo("IT"));
+    }
+
+    [Test]
+    public void OrderAcceptsUppercaseCriteria_IfCriteriaIsMixedCase_StillWorks()
+    {
+        List<IProduct> products = new List<IProduct>
+        {
+            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
+            new Product("IT", 2018, "USA", "Terror", "Ingles")
+        };
+        List<Interactions> interactions = new List<Interactions>
+        {
+            new Interactions(),
+            new Interactions()
+        };
         interactions[0].SumRating(1);
         interactions[1].SumRating(5);
 
         Order order = new Order(products, interactions, "sCoRe");
+        List<IProduct> result = order.GetRanking();
 
-        List<Product> result = order.GetRanking();
-
-        Assert.That(result[0].Name, Is.EqualTo("B"));
+        Assert.That(result[0].Name, Is.EqualTo("IT"));
     }
 }

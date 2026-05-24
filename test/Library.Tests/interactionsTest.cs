@@ -1,120 +1,81 @@
 using NUnit.Framework;
 using Library;
 
-namespace Library.Tests;
+namespace LibraryTests;
 
 public class InteractionsTests
 {
     [Test]
-    public void LikesStartsAtZero()
+    public void Likes_WhenCreated_StartsAtZero()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Assert
-        Assert.AreEqual(0, interactions.Likes);
+        Assert.That(interactions.Likes, Is.EqualTo(0));
     }
 
     [Test]
-    public void VisualizationsStartsAtZero()
+    public void Visualizations_WhenCreated_StartsAtZero()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Assert
-        Assert.AreEqual(0, interactions.Visualizations);
+        Assert.That(interactions.Visualizations, Is.EqualTo(0));
     }
 
     [Test]
-    public void RecommendationsStartsAtZero()
+    public void Recommendations_WhenCreated_StartsAtZero()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Assert
-        Assert.AreEqual(0, interactions.Recommendations);
+        Assert.That(interactions.Recommendations, Is.EqualTo(0));
     }
 
     [Test]
-    public void AddLikeAddsOneLike()
+    public void SumLike_IfLikeIsAdded_LikesIncreasesByOne()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddLike();
-
-        // Assert
-        Assert.AreEqual(1, interactions.Likes);
+        interactions.SumLike();
+        Assert.That(interactions.Likes, Is.EqualTo(1));
     }
 
     [Test]
-    public void AddVisualizationAddsOneVisualization()
+    public void SumVisualization_IfVisualizationIsAdded_VisualizationsIncreasesByOne()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddVisualization();
-
-        // Assert
-        Assert.AreEqual(1, interactions.Visualizations);
+        interactions.SumVisualization();
+        Assert.That(interactions.Visualizations, Is.EqualTo(1));
     }
 
     [Test]
-    public void AddRecommendationAddsOneRecommendation()
+    public void SumRecommendation_IfRecommendationIsAdded_RecommendationsIncreasesByOne()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddRecommendation();
-
-        // Assert
-        Assert.AreEqual(1, interactions.Recommendations);
+        interactions.SumRecommendation();
+        Assert.That(interactions.Recommendations, Is.EqualTo(1));
     }
 
     [Test]
-    public void AddLikeAddsMultipleLikes()
+    public void SumLike_IfMultipleLikesAdded_LikesEqualsThree()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddLike();
-        interactions.AddLike();
-        interactions.AddLike();
-
-        // Assert
-        Assert.AreEqual(3, interactions.Likes);
+        interactions.SumLike();
+        interactions.SumLike();
+        interactions.SumLike();
+        Assert.That(interactions.Likes, Is.EqualTo(3));
     }
 
     [Test]
-    public void AddVisualizationAddsMultipleVisualizations()
+    public void SumVisualization_IfMultipleVisualizationsAdded_VisualizationsEqualsThree()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddVisualization();
-        interactions.AddVisualization();
-        interactions.AddVisualization();
-
-        // Assert
-        Assert.AreEqual(3, interactions.Visualizations);
+        interactions.SumVisualization();
+        interactions.SumVisualization();
+        interactions.SumVisualization();
+        Assert.That(interactions.Visualizations, Is.EqualTo(3));
     }
 
     [Test]
-    public void AddRecommendationAddsMultipleRecommendations()
+    public void SumRecommendation_IfMultipleRecommendationsAdded_RecommendationsEqualsTwo()
     {
-        // Arrange
         Interactions interactions = new Interactions();
-
-        // Act
-        interactions.AddRecommendation();
-        interactions.AddRecommendation();
-
-        // Assert
-        Assert.AreEqual(2, interactions.Recommendations);
+        interactions.SumRecommendation();
+        interactions.SumRecommendation();
+        Assert.That(interactions.Recommendations, Is.EqualTo(2));
     }
 }
