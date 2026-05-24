@@ -4,6 +4,7 @@ public class Fachadas
     private List<User> users = new List<User>();
     public List<User> Users { get { return users; } }
     private Recommendation recommendation;
+    public Recommendation Recommendation { get { return recommendation; } }
     private Preferences preferences;
     public Preferences Preferences { get { return preferences; } }
     private Catalog catalog;

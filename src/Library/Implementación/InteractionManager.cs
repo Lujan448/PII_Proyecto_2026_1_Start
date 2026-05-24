@@ -13,7 +13,7 @@ namespace Library;
             interact.Add(interactions); 
         }
 
-        public void RemoveProduct(Interactions interactions)
+        public void RemoveInteraction(Interactions interactions)
         {
             interact.Remove(interactions);
         }

@@ -93,7 +93,7 @@ public class Recommendation
         }   
     }
 
-    public bool HasNoRecord()
+    public bool HasNoHistory()
     {
         if(history.Histories.Count == 0)
         {
@@ -108,9 +108,9 @@ public class Recommendation
         if (index < 0 || index >= interactionManager.Interact.Count) return;
     
         bool popular = interactionManager.Interact[index].IsPopular();
-        bool noRecord = HasNoRecord();
+        bool noHistory = HasNoHistory();
     
-        if (popular && noRecord)
+        if (popular && noHistory)
         {
             recommended.Add(product);
         }
