@@ -26,7 +26,7 @@ public class OrderTest
         Order order = new Order(products, interactions, "score");
         List<IProduct> result = order.GetRanking();
 
-        Assert.That(result[0].Name, Is.EqualTo("B"));
+        Assert.That(result[0].Name, Is.EqualTo("IT"));
     }
 
     [Test]
@@ -51,7 +51,7 @@ public class OrderTest
         Order order = new Order(products, interactions, "views");
         List<IProduct> result = order.GetRanking();
 
-        Assert.That(result[0].Name, Is.EqualTo("B"));
+        Assert.That(result[0].Name, Is.EqualTo("IT"));
     }
 
     [Test]
@@ -98,7 +98,7 @@ public class OrderTest
         Order order = new Order(products, interactions, "genre");
         List<IProduct> result = order.GetRanking();
 
-        Assert.That(result[0].Genre, Is.EqualTo("Accion"));
+        Assert.That(result[0].Genre, Is.EqualTo("Drama"));
     }
 
     [Test]
@@ -106,8 +106,8 @@ public class OrderTest
     {
         List<IProduct> products = new List<IProduct>
         {
-            new Product("Luna nueva", 2009, "USA", "Drama", "Ingles"),
-            new Product("IT", 2018, "USA", "Terror", "Ingles"),
+            new Product("Luna nueva", 2009, "USA", "Drama", "Inglés"),
+            new Product("IT", 2018, "USA", "Terror", "Inglés"),
             new Product("Balada de pájaros cantores", 2023, "USA", "Romance", "Inglés")
         };
         List<Interactions> interactions = new List<Interactions>

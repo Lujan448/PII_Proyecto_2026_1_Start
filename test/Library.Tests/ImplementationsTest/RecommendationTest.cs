@@ -88,8 +88,10 @@ public class RecommendationTest
         IProduct product = catalog.Products[0];
         User actualUser = new User("María", 19, "Uruguay");
         actualUser.Preferences.Select("Acción", true);
+        actualUser.Preferences.Select("Inglés", true);
         User similarUser = new User("Juan", 25, "Argentina");
         similarUser.Preferences.Select("Acción", true);
+        similarUser.Preferences.Select("Inglés", true);
         List<User> users = new List<User> {actualUser, similarUser};
         History history = new History();
         InteractionManager interactionManager = new InteractionManager();
@@ -106,14 +108,16 @@ public class RecommendationTest
         IProduct product = catalog.Products[0];
         User actualUser = new User("María", 19, "Uruguay");
         actualUser.Preferences.Select("Acción", true);
+        actualUser.Preferences.Select("Inglés", true);
         User differentUser = new User("Juan", 25, "Argentina");
         differentUser.Preferences.Select("Romance", true);
+        differentUser.Preferences.Select("Español", true);
         List<User> users = new List<User> {actualUser, differentUser};
         History history = new History();
         InteractionManager interactionManager = new InteractionManager();
         Recommendation recommendation = new Recommendation(actualUser, catalog, history, interactionManager);
         recommendation.CompareUsers(actualUser, product, users);
-        Assert.That(recommendation.Recommended, Does.Contain(product));
+        Assert.That(recommendation.Recommended, Does.Not.Contain(product));
     }
 
     [Test]
