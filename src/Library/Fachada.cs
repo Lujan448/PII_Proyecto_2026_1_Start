@@ -91,8 +91,8 @@ public class Fachadas
     //HU10
     public void RegisterInteractions(IProduct product, Interactions interactions)
     {
-        history.AddProductToRecord(product);           //registra el producto consumido
-        history.AddInteractionToRecord(interactions); //registra la interacción
+        history.AddProductToHistory(product);           //registra el producto consumido
+        history.AddInteractionToHistory(interactions); //registra la interacción
     }
 
     //HU11

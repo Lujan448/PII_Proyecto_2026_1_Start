@@ -17,12 +17,12 @@ public class History
         get { return interactions; }
     }
 
-    public void AddProductToRecord(IProduct product)
+    public void AddProductToHistory(IProduct product)
     {
         histories.Add(product);
     }
 
-    public void AddInteractionToRecord(Interactions interaction)
+    public void AddInteractionToHistory(Interactions interaction)
     {
         interactions.Add(interaction);
     }
@@ -36,7 +36,7 @@ public class History
         return false;
     }
 
-    public void RemoveFromRecord(IProduct product)
+    public void RemoveFromHistory(IProduct product)
     {
         histories.Remove(product);
     }
