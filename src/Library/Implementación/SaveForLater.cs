@@ -6,13 +6,13 @@ namespace Library;
 
 public class SavesLater
 {
-    private List<Product> saves = new List<Product>();
-    public List<Product> Saves
+    private List<IProduct> saves = new List<IProduct>();
+    public List<IProduct> Saves
     {
         get { return saves; }
     }
 
-    public void SaveItems(Product product)
+    public void SaveItems(IProduct product)
     {
         if (!saves.Contains(product))
         {

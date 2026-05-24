@@ -4,10 +4,17 @@ using System.Runtime.CompilerServices;
 public class Interactions
 {
     private int likes;
+    public int Likes { get {return likes; } }
     private int visualizations;
+    public int Visualizations { get {return visualizations; } }
     private int recommendations;
+    public int Recommendations { get {return recommendations; } }
     private double totalStars;
+    public double TotalStars { get {return totalStars; } }
     private int totalRatings;
+    public int TotalRatings { get {return totalRatings; } }
+    private int dislikes;
+    public int Dislikes { get { return dislikes; } }
 
     public Interactions()
     {
@@ -16,21 +23,6 @@ public class Interactions
         this.recommendations = 0;
         this.totalStars = 0;
         this.totalRatings = 0;
-    }
-
-    public int Likes
-    {
-        get { return this.likes; }
-    }
-
-    public int Visualizations
-    {
-        get { return this.visualizations; }
-    }
-
-    public int Recommendations
-    {
-        get { return this.recommendations; }
     }
 
     public double AverageRating
@@ -44,6 +36,11 @@ public class Interactions
 
             return this.totalStars / this.totalRatings;
         }
+    }
+
+    public void SumDislike()
+    {
+        this.dislikes++;
     }
 
     public void SumLike()

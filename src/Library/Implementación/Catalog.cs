@@ -1,9 +1,10 @@
 namespace Library;
-
+//Creamos esta clase a partir de que usamos SRP, ya que esta clase va a ser la experta de la información a la hora de crear y gestionar la 
+//lista de los productos, mientras que la clase product se va a encargar de los productos de manera individual.
     public class Catalog
     {
-        private List<Product> product = new List<Product>();
-        public List<Product> Products
+        private List<IProduct> product = new List<IProduct>();
+        public List<IProduct> Products
         {
             get { return product; }
         }
@@ -15,7 +16,7 @@ namespace Library;
             Console.WriteLine($" El producto '{name}' está registrado en el sistema.");
         }
 
-        public void RemoveProduct(Product products)
+        public void RemoveProduct(IProduct products)
         {
             product.Remove(products);
         }

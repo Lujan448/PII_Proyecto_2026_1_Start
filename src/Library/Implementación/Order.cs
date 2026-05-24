@@ -1,24 +1,24 @@
 using System.Collections.Generic;
 
 namespace Library;
-public class Order : IProductSource
+public class Order : IRanking
 {
     // Se guarda en una lista los productos que seran ordenados
     private List<Interactions> interactList;
-    private List<Product> rankedList;
+    public List<Interactions> InteractList { get; }
+    private List<IProduct> rankedList;
     private int totalItems;
     private string criteria;
 
-    public Order (List<Product> products, List<Interactions> interactions, string criteria)
+    public Order(List<IProduct> products, List<Interactions> interactions, string criteria)
     {
         rankedList = products;
         interactList = interactions;
-        totalItems = rankedList.Count;
         //Se normaliza el criterio para evitar errores
         string criter = criteria.ToLower();
 
         //Se valida el criterio, en caso de que sea invalido se elije "views" por defecto 
-        if (criter != "score" && criter != "views" && criter != "language" && criter != "genre" && criter != "likes")
+        if (criter != "score" && criter != "views" && criter != "language" && criter != "genre")
         {
             this.criteria = "views";
         }
@@ -32,9 +32,9 @@ public class Order : IProductSource
     // Ordena la lista de productos según el criterio seleccionado 
     public void Sort()
     {
-        for (int j = 0; j < totalItems - 1; j++)
+        for (int j = 0; j < rankedList.Count - 1; j++)
         {
-            for (int i = 0; i < totalItems - 1; i++)
+            for (int i = 0; i < rankedList.Count - 1; i++)
             {
                 bool needSwap = false;
 
@@ -69,9 +69,10 @@ public class Order : IProductSource
                         needSwap = true;
                     }
                 }
+
                 else if (criteria == "likes")
                 {
-                    if (interactList[i].Likes.CompareTo(interactList[i + 1].Likes) > 0)
+                    if (interactList[i].Likes < interactList[i + 1].Likes)
                     {
                         needSwap = true;
                     }
@@ -79,7 +80,7 @@ public class Order : IProductSource
 
                 if (needSwap)
                 {
-                    Product productOrder = rankedList[i];
+                    IProduct productOrder = rankedList[i];
                     rankedList[i] = rankedList[i + 1];
                     rankedList[i + 1] = productOrder; 
 
@@ -93,7 +94,7 @@ public class Order : IProductSource
 
     }
     //Devuelve la lista ya ordenada
-    public List<Product> GetRanking()
+    public List<IProduct> GetRanking()
     {
         Sort();
         return rankedList;

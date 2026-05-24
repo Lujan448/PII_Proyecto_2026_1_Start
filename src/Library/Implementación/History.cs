@@ -4,13 +4,12 @@ using Microsoft.VisualBasic;
 
 namespace Library;
 
-public class Record
+public class History
 {
-    //lo que se hace es un diccionario para ir colocando que le gusta y que no le gusta al usuario
-    private List<Product> records = new List<Product>();
-    public List<Product> Records
+    private List<IProduct> histories = new List<IProduct>();
+    public List<IProduct> Histories
     {
-        get { return records; }
+        get { return histories; }
     }
     private List<Interactions> interactions = new List<Interactions>();
     public List<Interactions>  Interactions
@@ -18,9 +17,9 @@ public class Record
         get { return interactions; }
     }
 
-    public void AddProductToRecord(Product product)
+    public void AddProductToRecord(IProduct product)
     {
-        records.Add(product);
+        histories.Add(product);
     }
 
     public void AddInteractionToRecord(Interactions interaction)
@@ -28,17 +27,17 @@ public class Record
         interactions.Add(interaction);
     }
 
-    public bool Consumed(Product product)
+    public bool Consumed(IProduct product)
     {
-        if (records.Contains(product))
+        if (histories.Contains(product))
         {
             return true;
         }
         return false;
     }
 
-    public void RemoveFromRecord(Product product)
+    public void RemoveFromRecord(IProduct product)
     {
-        records.Remove(product);
+        histories.Remove(product);
     }
 }

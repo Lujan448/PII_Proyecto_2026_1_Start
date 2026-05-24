@@ -1,14 +1,28 @@
+using System.Security.Cryptography;
+//En este caso usamos composición, ya que consideramos que las preferencias no van a poder existir de manera independiente sin la clase
+//usuario, ya que si eliminamos usuarios las preferencias de este no existirian.
 namespace Library;
     public class User
     {
-    
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Country { get; set; }
-        private Dictionary<string, bool> preference = new Dictionary<string, bool>();
-        public Dictionary<string, bool> Preference
+        private string name;
+        public string Name
+        { 
+            get {return name; } set {name = value;} 
+        }
+        private int age;
+        public int Age
+        { 
+            get {return age; } set {age = value;} 
+        }
+        private string country;
+        public string Country 
+        { 
+            get {return country; } set {country = value;} 
+        }
+        private Preferences preferences;
+        public Preferences Preferences
         {
-            get { return preference; }
+            get {return preferences; }
         }
     
 
@@ -18,6 +32,7 @@ namespace Library;
             this.Name = name;
             this.Age = age;
             this.Country = country;
+            this.preferences = new Preferences();
         }
 
       
