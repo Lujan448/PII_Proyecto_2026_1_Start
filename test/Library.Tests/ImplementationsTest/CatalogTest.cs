@@ -1,4 +1,6 @@
 using Library;
+using NUnit.Framework;
+using System.Collections.Generic;
 namespace LibraryTests
 {
     [TestFixture]
