@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para crear y gestionar la lista de las interacciones de los productos.
 //Además, utilizamos uno de los principios SOLID, el cual es SRP, con el proposito de que la clase Interactions no tenga más de una 

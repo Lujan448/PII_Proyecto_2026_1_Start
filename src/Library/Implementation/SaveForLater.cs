@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para crear y gestionar aquel contenido que el usuario desea guardar para consumir más tarde.
 //Si bien esta clase gestiona productos, no viola SRP ya que toda su responsabilidad

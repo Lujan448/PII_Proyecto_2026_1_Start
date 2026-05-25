@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para crear y gestionar el diccionario de las preferencias del usuario.
 //Además, utilizamos uno de los principios SOLID, el cual es SRP, con el proposito de que la clase User no tenga más de una 

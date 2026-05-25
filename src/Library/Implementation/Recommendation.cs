@@ -1,4 +1,6 @@
-﻿//Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
+﻿using System.Collections.Generic;
+using System;
+//Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para crear y gestionar las recomendaciones.
 //Si bien esta clase utiliza las preferencias, el catálogo y el encargado de las interacciones, no viola SRP
 //ya que todas estas dependencias se utilizan solamente con el propósito de realizar la responsabilidad de la clase Recommendation,

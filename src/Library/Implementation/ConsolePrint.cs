@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para imprimir la lista de recomendaciones ordenada.
 //Además, utilizamos uno de los principios SOLID, el cual es SRP, con el proposito de que la clase Order no tuviera más 
@@ -29,7 +31,7 @@ namespace Library
         //Imprime el texto generado en la consola
         public void Print()
         {
-        Console.WriteLine(TextToPrint());
+            Console.WriteLine(TextToPrint());
         }
     }
 }

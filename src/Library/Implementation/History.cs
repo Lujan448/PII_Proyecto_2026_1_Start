@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase aplicando el patrón de diseño Expert, ya que esta clase es la experta de la información
 //para crear y gestionar el historial del usuario, incluyendo los productos consumidos y sus interacciones asociadas.
 //Si bien esta clase gestiona tanto productos como interacciones, no viola SRP ya que ambas cosas forman parte

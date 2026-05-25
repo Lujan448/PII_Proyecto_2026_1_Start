@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 //Creamos esta clase llamada Fachada, cuyo propósito es simplificar
 //el acceso a los diferentes clases del programa. En lugar de que el cliente interactúe
 //directamente con cada clase (Catalog, Recommendation, History, etc.), la fachada va a juntar
