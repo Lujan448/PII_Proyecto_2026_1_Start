@@ -44,6 +44,5 @@ namespace Library
             this.Language = language;
         }
     }
-    
 }
 
